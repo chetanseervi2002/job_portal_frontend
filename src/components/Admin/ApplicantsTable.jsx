@@ -1,12 +1,10 @@
-import React from "react";
+import axios from "axios";
 import { motion } from "framer-motion";
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { MoreHorizontal } from "lucide-react";
 import { useSelector } from "react-redux";
 import { toast } from "sonner";
-import axios from "axios";
-import { APPLICATION_API_END_POINT } from "@/utils/constant";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
 
 const shortListingStatus = ["Accepted", "Rejected"];
 
@@ -16,7 +14,7 @@ const ApplicantsTable = () => {
     const statusHandler = async (status, id) => {
         try {
             axios.defaults.withCredentials = true;
-            const res = await axios.post(`${import.meta.env.APPLICATION_API_END_POINT}/status/${id}/update`, { status });
+            const res = await axios.post(`${import.meta.env.VITE_APPLICATION_API_END_POINT}/status/${id}/update`, { status });
             if (res?.data?.success) {
                 toast.success(res?.data?.message);
             }

@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import Navbar from "../shared/Navbar";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { COMPANY_API_END_POINT } from "@/utils/constant";
-import { toast } from "sonner";
-import { useDispatch } from "react-redux";
 import { setSingleCompany } from "@/redux/companySlice";
+import axios from "axios";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+import Navbar from "../shared/Navbar";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 
 const CompanyCreate = () => {
     const navigate = useNavigate();
@@ -18,7 +17,7 @@ const CompanyCreate = () => {
     const registerNewCompany = async () => {
         try {
             const res = await axios.post(
-                `${import.meta.env.COMPANY_API_END_POINT}/register`,
+                `${import.meta.env.VITE_COMPANY_API_END_POINT}/register`,
                 { companyName },
                 { headers: { "Content-Type": "application/json" }, withCredentials: true }
             );

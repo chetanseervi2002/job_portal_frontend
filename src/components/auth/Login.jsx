@@ -32,10 +32,14 @@ const Login = () => {
     e.preventDefault();
     try {
       dispatch(setLoading(true));
-      const res = await axios.post(`${import.meta.env.USER_API_END_POINT}/login`, input, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_USER_API_END_POINT}/login`,
+        input,
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
 
       if (res.data.success) {
         localStorage.setItem("token", res.data.token);
@@ -70,7 +74,9 @@ const Login = () => {
           onSubmit={submitHandler}
           className="w-full sm:w-3/4 md:w-1/2 bg-white border border-gray-200 shadow-lg rounded-lg p-6 sm:p-8"
         >
-          <h1 className="font-bold text-lg sm:text-xl text-center mb-5">Login</h1>
+          <h1 className="font-bold text-lg sm:text-xl text-center mb-5">
+            Login
+          </h1>
 
           {/* Email Field */}
           <div className="mb-4">

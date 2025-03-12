@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
+import { setAllApplicants } from "@/redux/applicationSlice";
+import axios from "axios";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import Navbar from "../shared/Navbar";
 import ApplicantsTable from "./ApplicantsTable";
-import axios from "axios";
-import { APPLICATION_API_END_POINT } from "@/utils/constant";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { setAllApplicants } from "@/redux/applicationSlice";
-import store from "@/redux/store";
 
 const Applicants = () => {
     const params = useParams();
@@ -17,7 +15,7 @@ const Applicants = () => {
     useEffect(() => {
         const fetchAllApplicants = async () => {
             try {
-                const res = await axios.get(`${import.meta.env.APPLICATION_API_END_POINT}/${params?.id}/applicants`, { withCredentials: true });
+                const res = await axios.get(`${import.meta.env.VITE_APPLICATION_API_END_POINT}/${params?.id}/applicants`, { withCredentials: true });
                 dispatch(setAllApplicants(res?.data?.job));
             } catch (error) {
                 console.log(error);

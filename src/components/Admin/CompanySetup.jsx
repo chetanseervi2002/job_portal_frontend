@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import Navbar from '../shared/Navbar';
-import { Button } from '../ui/button';
-import { ArrowLeft, Loader2 } from 'lucide-react';
-import { Label } from '../ui/label';
-import { Input } from '../ui/input';
+import useGetCompanyById from '@/hooks/useGetCompanyById';
 import axios from 'axios';
-import { COMPANY_API_END_POINT } from '@/utils/constant';
+import { motion } from 'framer-motion';
+import { ArrowLeft, Loader2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'sonner';
-import { useSelector } from 'react-redux';
-import store from '@/redux/store';
-import useGetCompanyById from '@/hooks/useGetCompanyById';
-import { motion } from 'framer-motion';
+import Navbar from '../shared/Navbar';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
 
 const CompanySetup = () => {
   const params = useParams();
@@ -51,7 +49,7 @@ const CompanySetup = () => {
 
     try {
       setLoading(true);
-      const res = await axios.put(`${import.meta.env.COMPANY_API_END_POINT}/update/${params.id}`, formData, {
+      const res = await axios.put(`${import.meta.env.VITE_COMPANY_API_END_POINT}/update/${params.id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

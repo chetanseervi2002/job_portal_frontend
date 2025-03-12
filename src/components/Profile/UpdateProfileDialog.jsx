@@ -46,7 +46,7 @@ const UpdateProfileDialog = ({ open, setOpen }) => {
         if (input.file) formData.append('file', input.file);
 
         try {
-            const res = await axios.post(`${import.meta.env.USER_API_END_POINT}/profile/update`, formData, {
+            const res = await axios.post(`${import.meta.env.VITE_USER_API_END_POINT}/profile/update`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
                 withCredentials: true
             });

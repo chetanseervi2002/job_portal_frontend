@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
-import { useParams } from "react-router-dom";
 import { setSingleJob } from "@/redux/jobSlice";
 import axios from "axios";
-import { JOB_API_END_POINT, APPLICATION_API_END_POINT } from "@/utils/constant";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import store from "@/redux/store";
+import { useParams } from "react-router-dom";
 import { toast } from "sonner";
+import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
 
 const JobDescription = () => {
   const { singleJob } = useSelector((store) => store.job);
@@ -25,7 +23,7 @@ const JobDescription = () => {
   const applyJobHandler = async () => {
     try {
       const res = await axios.get(
-        `${import.meta.env.APPLICATION_API_END_POINT}/apply/${jobId}`,
+        `${import.meta.env.VITE_APPLICATION_API_END_POINT}/apply/${jobId}`,
         { withCredentials: true }
       );
 
@@ -47,7 +45,7 @@ const JobDescription = () => {
   useEffect(() => {
     const fetchSingleJob = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.JOB_API_END_POINT}/get/${jobId}`, {
+        const res = await axios.get(`${import.meta.env.VITE_JOB_API_END_POINT}/get/${jobId}`, {
           withCredentials: true,
         });
 

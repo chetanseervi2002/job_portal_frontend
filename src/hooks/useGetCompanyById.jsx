@@ -1,7 +1,7 @@
 import { setSingleCompany } from '@/redux/companySlice';
-import { COMPANY_API_END_POINT } from '@/utils/constant';
+import { VITE_COMPANY_API_END_POINT } from '@/utils/constant';
 import axios from 'axios';
-import React, { useEffect } from 'react'
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 const useGetCompanyById = (companyId) => {
@@ -16,11 +16,11 @@ const useGetCompanyById = (companyId) => {
     const fetchSingleCompany = async () => {
         try {
           console.log("This is You");
-          console.log(`"This is yours ${COMPANY_API_END_POINT}/get/${companyId}"`);
-            const res = await axios.get(`${import.meta.env.COMPANY_API_END_POINT}/get/${companyId}`, {
+          console.log(`"This is yours ${VITE_COMPANY_API_END_POINT}/get/${companyId}"`);
+            const res = await axios.get(`${import.meta.env.VITE_COMPANY_API_END_POINT}/get/${companyId}`, {
               withCredentials: true,
             });
-            console.log(`"This is Mine ${COMPANY_API_END_POINT}/get/${companyId}"`);
+            console.log(`"This is Mine ${VITE_COMPANY_API_END_POINT}/get/${companyId}"`);
             console.log("ye apni Company hai:");
             console.log("ye apni Company hai:", res.data.company);
             if(res.data.success){

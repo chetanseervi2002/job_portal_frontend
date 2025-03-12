@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import Navbar from '../shared/Navbar';
-import { Label } from '../ui/label';
-import { Input } from '../ui/input';
-import { Button } from '../ui/button';
-import { useSelector } from 'react-redux';
-import store from '@/redux/store';
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '../ui/select';
 import axios from 'axios';
-import { JOB_API_END_POINT } from '@/utils/constant';
-import { toast } from 'sonner';
-import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
+import Navbar from '../shared/Navbar';
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '../ui/select';
 
 const PostJobs = () => {
     const [input, setInput] = useState({
@@ -43,7 +40,7 @@ const PostJobs = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            const res = await axios.post(`${import.meta.env.JOB_API_END_POINT}/post`, input, {
+            const res = await axios.post(`${import.meta.env.VITE_JOB_API_END_POINT}/post`, input, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
