@@ -25,7 +25,7 @@ const JobDescription = () => {
   const applyJobHandler = async () => {
     try {
       const res = await axios.get(
-        `${APPLICATION_API_END_POINT}/apply/${jobId}`,
+        `${import.meta.env.APPLICATION_API_END_POINT}/apply/${jobId}`,
         { withCredentials: true }
       );
 
@@ -47,7 +47,7 @@ const JobDescription = () => {
   useEffect(() => {
     const fetchSingleJob = async () => {
       try {
-        const res = await axios.get(`${JOB_API_END_POINT}/get/${jobId}`, {
+        const res = await axios.get(`${import.meta.env.JOB_API_END_POINT}/get/${jobId}`, {
           withCredentials: true,
         });
 

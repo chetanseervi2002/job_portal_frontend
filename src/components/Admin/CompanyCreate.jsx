@@ -18,7 +18,7 @@ const CompanyCreate = () => {
     const registerNewCompany = async () => {
         try {
             const res = await axios.post(
-                `${COMPANY_API_END_POINT}/register`,
+                `${import.meta.env.COMPANY_API_END_POINT}/register`,
                 { companyName },
                 { headers: { "Content-Type": "application/json" }, withCredentials: true }
             );

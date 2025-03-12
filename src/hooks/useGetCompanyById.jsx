@@ -17,7 +17,7 @@ const useGetCompanyById = (companyId) => {
         try {
           console.log("This is You");
           console.log(`"This is yours ${COMPANY_API_END_POINT}/get/${companyId}"`);
-            const res = await axios.get(`${COMPANY_API_END_POINT}/get/${companyId}`, {
+            const res = await axios.get(`${import.meta.env.COMPANY_API_END_POINT}/get/${companyId}`, {
               withCredentials: true,
             });
             console.log(`"This is Mine ${COMPANY_API_END_POINT}/get/${companyId}"`);
